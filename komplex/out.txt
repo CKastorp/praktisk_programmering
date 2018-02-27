@@ -1,0 +1,6 @@
+Testing komplex_add
+a= 1+2i
+b= 3+5i
+a+b should be 4+7i
+a+b really is 4+7i
+Test 'add' passed.
