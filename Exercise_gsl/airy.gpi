@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'airy.svg'
+set title 'Airy functions'
+set tics out
+set xlabel 'x'
+set ylabel 'y'
+plot [][-10:10] 'airy.data' using 1:2 with lines title 'Ai(x)'\
+	,'airy.data'  using 1:3 with lines title 'Bi(x)'

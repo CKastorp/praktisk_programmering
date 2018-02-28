@@ -1,0 +1,3 @@
+Solution 'x' from LU_solve: (0.176788,-0.515463,0.730289)
+Solution times coefficient matrix: (6.23,5.37,2.29)
+Original right hand side: (6.23,5.37,2.29)
