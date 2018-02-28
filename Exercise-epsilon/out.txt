@@ -1,0 +1,17 @@
+My maximum integer is 2147483647.
+My smallest integer is -2147483648.
+Largest integer, for loop: 2147483647
+Smallest integer, for loop: -2147483648
+Largest integer do-while: 2147483647
+Smallest integer, do-while: -2147483648
+My float epsilon: 1.19209e-07. Library value: 0.000000.
+My double epsilon: 2.22045e-16. Library value: 2.22045e-16.
+My long double epsilon: 1.0842e-19. Library value: 1.0842e-19.
+Float sum for increasing n: 15.403683.
+ Sum for decreasing n: 18.807919.
+Difference is due to rounding errors in float as 1/n approaches 0.
+Due to finite sensitivity, the sum should converge.
+Summation for increasing n, larger Nmax: 15.403683.
+Same procedure four doubles:
+Increasing n: 21.3716. Decreasing n: 21.3716
+The results are identical due to better precision in the 'double' type.
