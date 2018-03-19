@@ -1,0 +1,6 @@
+set term svg background rgb 'white'
+set out "testplot.svg"
+set xlabel 'x'
+set ylabel 'y'
+plot "cosines.txt" with dots title "stdio, cosine",\
+	"sines.txt" with dots title "Commandline, sines"
