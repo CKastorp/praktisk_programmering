@@ -1,0 +1,10 @@
+
+Testing nvec_alloc
+Test succesful
+
+Testing nvector set/get
+Value is 1. Should be 1. Test passed
+Value is 1. Should be 1. Test passed
+
+Testing dot product
+Dot product is 7. Should be 7. Test passed.
