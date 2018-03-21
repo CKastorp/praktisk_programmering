@@ -1,0 +1,5 @@
+set term svg background rgb 'white'
+set out "energies.svg"
+set xlabel "alpha"
+set ylabel "energy"
+plot "output.txt" index 1 with lines title "Harmonic oscillator energies"
