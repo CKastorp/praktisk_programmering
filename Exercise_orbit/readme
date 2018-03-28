@@ -1,0 +1,5 @@
+This folder contains all files needed to solve the exercise "orbit- odeiv" and the figures it produces.
+
+In the first exercise (logistic_plot.svg) the function does clearly not reproduce the logistic function, even for a fairly small step size.
+The observed behavior is a well-known thing in optimisation software, such as when bringing a sample to a certain temperature, where changes happen faster than the feedback timescale, and large changes are required.
+The second exercise (orbit.svg) works as intended, except that the figure is visually skew(x and y not to scale).
