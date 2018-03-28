@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'orbit.svg'
+set title 'Newtonian and relativistic orbits"
+set grid
+plot 'output.txt' index 1 with lines title "Newtonian circular motion"\
+, 'output.txt' index 2 with lines title "Newtonian elipsoid motion"\
+, 'output.txt' index 3 with lines title "Relativistic orbital motion"

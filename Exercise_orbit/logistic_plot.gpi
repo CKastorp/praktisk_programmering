@@ -1,0 +1,6 @@
+set term svg background rgb 'white'
+set out 'logistic_plot.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Logistic function by odeiv'
+plot 'output.txt' index 0 with lines
