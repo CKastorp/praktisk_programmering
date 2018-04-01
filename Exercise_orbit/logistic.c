@@ -3,8 +3,7 @@
 #include"gsl/gsl_odeiv2.h"
 #include"gsl/gsl_errno.h"
 int logistic_ode(double x, double y[],double dydx[],void* params){
-dydx[0]=y[1];
-dydx[1]=y[0]*(1-y[0]);
+dydx[0]=y[0]*(1-y[0]);
 return GSL_SUCCESS;
 }
 
@@ -14,7 +13,7 @@ double t=0,acc=1e-6,eps=1e-6,hstart=0.01;
 gsl_odeiv2_system sys;
 sys.function=logistic_ode;
 sys.jacobian=NULL;
-sys.dimension=2;
+sys.dimension=1;
 sys.params=NULL;
 
 gsl_odeiv2_driver* driver=gsl_odeiv2_driver_alloc_y_new(&sys,gsl_odeiv2_step_rkf45,hstart,acc,eps);
