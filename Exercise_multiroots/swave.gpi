@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'swave.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Approximation of the ground state of hydrogen'
+plot 'out.txt' index 2 using 1:2 with lines title 'Shooting method, rmax=8', 'out.txt' index 4 using 1:3 with lines title 'Exact result'\
+	,'out.txt' index 4 using 1:2 with lines title 'Shooting method, rmax=10'
