@@ -2,4 +2,5 @@ set term svg background rgb 'white'
 set out 'path.svg'
 set xlabel 'x'
 set ylabel 'y'
+set title 'Points examined while finding the Rosenbrock minimum'
 plot 'out.txt' index 0 using 1:2 with dots

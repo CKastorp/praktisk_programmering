@@ -8,7 +8,7 @@
 int ode_Swave(double r, double y[],double dydr[],void* params){
 double e=*(double*)params;
 dydr[0]=y[1];
-dydr[1]=2*(e-1/r)*y[0];
+dydr[1]=2*(-e-1/r)*y[0];
 
 return GSL_SUCCESS;
 }
@@ -16,7 +16,7 @@ return GSL_SUCCESS;
 double hydrogen(double r, double e){
 assert(r>=0);
 double t=1e-3;
-if (r<t) return r-r*2;
+if (r<t) return r-r*r;
 double startstep=1e-3, abs=1e-6,rel=1e-6;
 
 gsl_odeiv2_system sys;
