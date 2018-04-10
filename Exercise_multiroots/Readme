@@ -2,9 +2,9 @@ These are the files needed tosolve the exercise "multiroots" and the produced fi
 Number of iterations: 274
 Rosenbrock minimum: (1,1).
 Analytic result: (1,1)
-rmax: 8, E=-0.74989
+rmax: 8, E=-0.499975
 
-rmax: 10, E=-0.82639
+rmax: 10, E=-0.499999
 
 
-In both cases, the ground state is estimated way below the actual result, and the proposed states oscillate wildly. This is not a good estimate forthe hydrogen ground state.
+In both cases, the ground state is estimated fairly well, and the curves lie exactly on top of each other except close to rmax.
