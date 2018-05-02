@@ -1,0 +1,4 @@
+These files solve the exercise "optimisation". The following text is displayed upon finalisation:
+
+Rosenbrock minimum: ((1.00262,1.00499). Number of iterations: 87.
+Analytic result: (1,1)
