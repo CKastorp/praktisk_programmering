@@ -1,0 +1,6 @@
+set term svg background rgb 'white'
+set out 'fit.svg'
+set xlabel 't'
+set ylabel 'y'
+set title 'Fitting to an exponential decay'
+plot 'output.txt' index 3 with lines title 'fit', 'output.txt' index 2 with dots title 'data'
