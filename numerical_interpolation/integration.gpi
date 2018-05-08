@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'integration.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Integration of linear interpolation of x^2'
+plot 'output.txt' index 2 using 1:2 with lines title 'Analytic',\
+	'output.txt' index 2 using 1:3 with lines title 'Linear interpolation'
+
