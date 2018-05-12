@@ -26,3 +26,5 @@ Matrix product QR:
 6.70446 15.3646 5.55549 
 11.0794 9.54794 12.5774 
 
+Test for x=(1,2,3):
+Solution found by routine: (1,2,3).

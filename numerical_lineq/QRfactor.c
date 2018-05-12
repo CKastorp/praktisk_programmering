@@ -22,6 +22,7 @@ double dummy;
 for (int i=0;i<m;i++){
 norm=sqrt(matrix_column_dotproduct(A,i,A,i));
 gsl_matrix_set(R,i,i,norm);
+
 for(int j=0;j<n;j++){dummy=gsl_matrix_get(A,j,i)/norm;
 gsl_matrix_set(A,j,i,dummy);}
 

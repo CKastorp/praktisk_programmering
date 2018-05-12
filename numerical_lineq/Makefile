@@ -8,7 +8,7 @@ all: output.txt
 output.txt: main
 	./$< > $@
 
-main: main.o QRfactor.o support.o
+main: main.o QRfactor.o support.o QRsolve.o
 
 .PHONEY: clean
 clean:

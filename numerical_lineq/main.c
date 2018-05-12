@@ -4,7 +4,7 @@
 #include"math.h"
 #include"gsl/gsl_errno.h"
 #include"gsl/gsl_matrix.h"
-
+int QRsolve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x);
 int QRfactor(gsl_matrix* A,gsl_matrix* R);
 void print_matrix(gsl_matrix*A);
 void random_matrix(gsl_matrix* A);
@@ -15,9 +15,10 @@ int m=3;
 gsl_matrix* A=gsl_matrix_alloc(n,m);
 gsl_matrix* R=gsl_matrix_alloc(m,m);
 gsl_matrix* Q=gsl_matrix_alloc(n,m);
-
 gsl_matrix* QTQ=gsl_matrix_alloc(m,m);
 gsl_matrix* QRtest=gsl_matrix_alloc(n,m);
+gsl_vector* x=gsl_vector_alloc(m);
+gsl_vector* b=gsl_vector_alloc(n);
 
 random_matrix(A);
 gsl_matrix_memcpy(Q,A);
@@ -38,6 +39,20 @@ print_matrix(QTQ);
 printf("Matrix product QR:\n");
 print_matrix(QRtest);
 
+fprintf(stderr,"Solving\n");
+printf("Test for constructed b, x=(1,2,3):\n");
+gsl_vector_set_zero(b);
+for(int i=0;i<n;i++){
+    double temp=0;
+for(int j=0;j<m;j++){
+temp+=gsl_matrix_get(A,i,j)*(j+1);
+}
+gsl_vector_set(b,i,temp);
+}
+QRsolve(Q,R,b,x);
+printf("Solution found by routine: (%g,%g,%g).\n",gsl_vector_get(x,0),gsl_vector_get(x,1),gsl_vector_get(x,2));
+gsl_vector_free(x);
+gsl_vector_free(b);
 gsl_matrix_free(QRtest);
 gsl_matrix_free(QTQ);
 gsl_matrix_free(Q);
