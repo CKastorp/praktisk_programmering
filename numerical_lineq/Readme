@@ -1,0 +1,2 @@
+This folder contains the necessary files for part A in the numerical methods exercise "linear equations".
+In the product Q^TQ, the off-diagonal elements are nonzero but so small that this is attributed to rounding errors (E-16/E-17).
