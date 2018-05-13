@@ -1,3 +1,6 @@
-This folder contains the necessary files for part A in the numerical methods exercise "linear equations".
+This folder contains the necessary files for part A and B in the numerical methods exercise "linear equations".
 In the product Q^TQ, the off-diagonal elements are nonzero but so small that this is attributed to rounding errors (E-16/E-17).
 The vector b is constructed to fulfil b=Ax, x=(1,2,3), which is indeed the solution found by the QR-routine.
+
+The QR-routine works for tall and square A, while the QR inverse only works for square A and square inverse B.
+As for the product Q^TQ, the off-diagonal elements in AB are small enough to be attributed to roundoff errors (E-16/E-17).
