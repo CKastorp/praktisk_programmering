@@ -1,0 +1,1 @@
+Coefficients for log(x),1,x by QR: (6.99139,0.995228,-1.99699).
