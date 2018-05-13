@@ -6,17 +6,20 @@
 #include"gsl/gsl_matrix.h"
 int QRsolve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x);
 int QRfactor(gsl_matrix* A,gsl_matrix* R);
+int QRinverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* B);
 void print_matrix(gsl_matrix*A);
 void random_matrix(gsl_matrix* A);
 
 int main(){
 int n=4;
-int m=3;
+int m=4;
 gsl_matrix* A=gsl_matrix_alloc(n,m);
+gsl_matrix* B=gsl_matrix_alloc(m,n);
 gsl_matrix* R=gsl_matrix_alloc(m,m);
 gsl_matrix* Q=gsl_matrix_alloc(n,m);
 gsl_matrix* QTQ=gsl_matrix_alloc(m,m);
 gsl_matrix* QRtest=gsl_matrix_alloc(n,m);
+gsl_matrix* ABtest=gsl_matrix_alloc(n,n);
 gsl_vector* x=gsl_vector_alloc(m);
 gsl_vector* b=gsl_vector_alloc(n);
 
@@ -49,8 +52,17 @@ temp+=gsl_matrix_get(A,i,j)*(j+1);
 }
 gsl_vector_set(b,i,temp);
 }
-QRsolve(Q,R,b,x);
-printf("Solution found by routine: (%g,%g,%g).\n",gsl_vector_get(x,0),gsl_vector_get(x,1),gsl_vector_get(x,2));
+status=QRsolve(Q,R,b,x);
+printf("Solution found by routine: (%g,%g,%g).\n\n",gsl_vector_get(x,0),gsl_vector_get(x,1),gsl_vector_get(x,2));
+
+printf("Calculating inverse of A.\n");
+status=QRinverse(Q,R,B);
+printf("Matrix B:\n");print_matrix(B);
+gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,A,B,0,ABtest);
+printf("Matrix product AB:\n");print_matrix(ABtest);
+
+gsl_matrix_free(B);
+gsl_matrix_free(ABtest);
 gsl_vector_free(x);
 gsl_vector_free(b);
 gsl_matrix_free(QRtest);

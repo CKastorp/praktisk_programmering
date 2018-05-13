@@ -13,11 +13,10 @@ if(b->size !=n) return GSL_EINVAL;
 if(x->size!=m) return GSL_EINVAL;
 if (R->size1!=R->size2)return GSL_ENOTSQR;
 if (R->size1!=m)return GSL_EINVAL;
-gsl_matrix* QT=gsl_matrix_alloc(m,n);
-gsl_vector* RHS=gsl_vector_alloc(m);
-matrixtranspose(Q,QT);
 
-gsl_blas_dgemv(CblasNoTrans,1,QT,b,0,RHS);
+gsl_vector* RHS=gsl_vector_alloc(m);
+
+gsl_blas_dgemv(CblasTrans,1,Q,b,0,RHS);
 
 int i,j;
 for(i=m-1;i>=0;i--){
@@ -30,6 +29,29 @@ for (j=0;j<i;j++){
 
 }
 gsl_vector_free(RHS);
-gsl_matrix_free(QT);
+
+    return GSL_SUCCESS;
+}
+
+int QRinverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* B){
+
+int n=Q->size1;
+int i;
+if (R->size1!=R->size2)return GSL_ENOTSQR;
+if (R->size1!=n)return GSL_EINVAL;
+if (Q->size1!=Q->size2)return GSL_ENOTSQR;
+if (Q->size1!=n)return GSL_EINVAL;
+gsl_vector* xi=gsl_vector_alloc(n);
+gsl_vector* ei=gsl_vector_alloc(n);
+
+for(i=0;i<n;i++){
+gsl_vector_set_zero(ei);
+gsl_vector_set(ei,i,1);/* constructing i'th unit vector*/
+int status=QRsolve(Q,R,ei,xi);
+fprintf(stderr,"%i\n",status);
+gsl_matrix_set_col(B,i,xi);
+}
+gsl_vector_free(ei);
+gsl_vector_free(xi);
     return GSL_SUCCESS;
 }
