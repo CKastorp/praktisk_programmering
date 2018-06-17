@@ -1,0 +1,3 @@
+This folder contains files thatsolve the numerical methods exercise "Matrix diagonalisation" part A.
+The trend in CPU time usage seems to be somewhat figher than O(n^3), but a better fit would have been made with fewe low-lying points and a whole polinomial, since it contains a fair amount of O(n^2) operations.
+In output.txt is an example for a small matrix (6x6). The off- diagonal elements are e-16 and e-17, which is attributed to roundoff errors.
