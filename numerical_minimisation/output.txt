@@ -1,0 +1,41 @@
+Newtonian optimisation, number of steps: 25.
+Solution found to Rosenbrock minimum: (0.999955,0.99991). Analytic: (1,1).
+Newtonian optimisation, number of steps: 7.
+Solution found to Himmelblau minimum: (3.58443,-1.84813).
+DeltaB, iteration 1:
+0.211118 -0.405996 
+-0.405996 0.780762 
+
+
+DeltaB, iteration 2:
+0.331861 -0.739782 
+-0.739782 1.64912 
+
+
+DeltaB, iteration 3:
+1.03458 -1.70488 
+-1.70488 2.80947 
+
+
+DeltaB, iteration 4:
+2.56937 -2.68315 
+-2.68315 2.80198 
+
+
+DeltaB, iteration 5:
+5.14693 -5.53393 
+-5.53393 5.95003 
+
+
+DeltaB, iteration 6:
+0.190143 -0.964028 
+-0.964028 4.88764 
+
+
+DeltaB, iteration 7:
+-0 0 
+0 -0 
+
+
+Quasi-newtonian, number of steps: 10.
+Solution found to Rosenbrock minimum (Quasi-Newton): (-nan,-nan). Analytic: (1,1).
