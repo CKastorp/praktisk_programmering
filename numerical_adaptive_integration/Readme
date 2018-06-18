@@ -1,0 +1,2 @@
+These files solve the exercise "Adaptve integration" part A. The number of iterations returned refers to the deepest level of recursion, not the actual number of times the function was called.
+Although the singularities at x=0 in some of the functions, the routine fares well. It would not, though, should any of the points used hit a singularity and return +/- infinity.
