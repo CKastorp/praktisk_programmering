@@ -1,0 +1,10 @@
+Number of recursion levels in integration: 1.
+First test: I=1. Should be 1.
+Number of recursion levels in integration: 6.
+int_0^1 sqrt(x) dx= 0.666667. Should be 2/3.
+Number of recursion levels in integration: 6.
+int_0^1 1/sqrt(x) dx= 2. Should be 2.
+Number of recursion levels in integration: 7.
+int_0^1 ln(x)/sqrt(x) dx= -4. Should be -4.
+Number of recursion levels in integration: 11.
+pi=3.14159.
