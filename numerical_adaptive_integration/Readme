@@ -1,2 +1,5 @@
-These files solve the exercise "Adaptve integration" part A. The number of iterations returned refers to the deepest level of recursion, not the actual number of times the function was called.
+These files solve the exercise "Adaptve integration" part A and B, except efficiency against gsl-routines is not checked. The number of iterations returned refers to the deepest level of recursion, not the actual number of times the function was called.
 Although the singularities at x=0 in some of the functions, the routine fares well. It would not, though, should any of the points used hit a singularity and return +/- infinity.
+if b<a, the integral Q=int_b^a is calculated and -Q is returned.
+For semi-infinite intervals [a,inf] og [-inf,a], the integral is split in a [0,inf] and [a,0]-part (or [-inf,0]+[0,b]). The two parts are handled separately and numbers of iterations are returned for both halves.
+Any subinterval seems to be handled. Only divergences inside the intgration interval has not been tested.
