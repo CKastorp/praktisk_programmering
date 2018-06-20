@@ -1,0 +1,2 @@
+These files solve the Ordinary Differential Equations exercise part A. The sine is tested in the interval (0,15] and the airy function is tested in the interval (-15,5].
+The routine (rk-45) seems to work, ecept the starting conditions provided for the Airy function gave the diverging solution.
