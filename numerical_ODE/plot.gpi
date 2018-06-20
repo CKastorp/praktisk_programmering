@@ -1,0 +1,9 @@
+set term svg background rgb 'white'
+set out 'plot.svg'
+set xlabel 'x'
+set ylabel 'y'
+set yrange [-10:10]
+set title 'ODE test functions'
+plot 'output.txt' index 0 with lines title 'sin(x)',\
+	'output.txt' index 1 with lines title 'Airy function'
+
