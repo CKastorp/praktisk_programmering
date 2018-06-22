@@ -3,8 +3,11 @@ LDLIBS +=$$(gsl-config --libs)
 
 .PHONEY: all
 
-all: output.txt
-	cat $<
+all: fit.svg
+
+fit.svg: fit.gpi output.txt
+	gnuplot $<
+	
 output.txt: main
 	./$< > $@
 

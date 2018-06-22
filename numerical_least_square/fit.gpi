@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'fit.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Fit to a*log(x)+b+c*x'
+plot 'output.txt' index 1 with lines title 'Fit',\
+	'output.txt' index 2 with errorbars title 'Data points',\
+

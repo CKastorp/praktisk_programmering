@@ -23,6 +23,11 @@ loadvectors(x,y,dy);/*Hardcoded values*/
 int status=QRleastsquare(x,y,dy,c,fitfunction);
 
 printf("Coefficients for log(x),1,x by QR: (%g,%g,%g).\n",gsl_vector_get(c,0),gsl_vector_get(c,1),gsl_vector_get(c,2));
+printf("\n\n");
+for(double q=1.0/16;q<10;q+=1.0/16)printf("%g %g\n",q,log(q)*gsl_vector_get(c,0)+gsl_vector_get(c,1)+q*gsl_vector_get(c,2));
+printf("\n\n");
+for(int i=0;i<n;i++)printf("%g %g %g\n",gsl_vector_get(x,i),gsl_vector_get(y,i),gsl_vector_get(dy,i));
+
 
 gsl_vector_free(x);
 gsl_vector_free(y);
