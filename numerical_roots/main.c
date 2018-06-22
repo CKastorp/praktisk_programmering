@@ -47,8 +47,8 @@ status=newton(rosenbrock_gradient,x,dx,epsilon);
 if(status==11) fprintf(stderr,"Newton root finding not converged, Rosenbrock.\n");
 printf("Rosenbrock minimum: (%g,%g). Analytic result: (1,1).\n",gsl_vector_get(x,0),gsl_vector_get(x,1));
 
-gsl_vector_set(x,0,-3);
-gsl_vector_set(x,1,-3);
+gsl_vector_set(x,0,5);
+gsl_vector_set(x,1,5);
 status=newton(himmelblau_gradient,x,dx,epsilon);
 if(status==11) fprintf(stderr,"Newton root finding not converged, Himmelblau.\n");
 printf("Himmelblau minimum found: (%g,%g).\n",gsl_vector_get(x,0),gsl_vector_get(x,1));

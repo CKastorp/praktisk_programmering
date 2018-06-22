@@ -62,7 +62,7 @@ gsl_vector_memcpy(fx,fz);
 
 if(gsl_blas_dnrm2(step)<dx||gsl_blas_dnrm2(fx)<epsilon) break;
 }
-fprintf(stderr,"Iterations: %i.\n",iter);
+printf("Iterations: %i.\n",iter);
 gsl_vector_free(Dx);
 gsl_vector_free(step);
 gsl_vector_free(fz);
