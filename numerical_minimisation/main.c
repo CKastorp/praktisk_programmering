@@ -22,16 +22,22 @@ int status=newton(rosen,rosen_hessian,xstart,df,epsilon);
 if (status==11)fprintf(stderr,"Rosenbrock minimum not converged.\n");
 printf("Solution found to Rosenbrock minimum: (%g,%g). Analytic: (1,1).\n",gsl_vector_get(xstart,0),gsl_vector_get(xstart,1));
 
-gsl_vector_set(xstart,0,10); gsl_vector_set(xstart,1,-5);
+gsl_vector_set(xstart,0,5); gsl_vector_set(xstart,1,5);
 
 status=newton(himmelblau,himmel_hessian,xstart,df,epsilon);
 if (status==11)fprintf(stderr,"Himmelblau minimum not converged.\n");
 printf("Solution found to Himmelblau minimum: (%g,%g).\n",gsl_vector_get(xstart,0),gsl_vector_get(xstart,1));
 
-gsl_vector_set(xstart,0,0);gsl_vector_set(xstart,1,0);
+gsl_vector_set(xstart,0,1.5);gsl_vector_set(xstart,1,0.2);
+epsilon=0.000001;
 status=qnewton(rosen,xstart,df,epsilon);
 if (status==11)fprintf(stderr,"Rosenbrock minimum not converged (qnewton).\n");
 printf("Solution found to Rosenbrock minimum (Quasi-Newton): (%g,%g). Analytic: (1,1).\n",gsl_vector_get(xstart,0),gsl_vector_get(xstart,1));
+
+gsl_vector_set(xstart,0,5);gsl_vector_set(xstart,1,5);
+status=qnewton(himmelblau,xstart,df,epsilon);
+if (status==11)fprintf(stderr,"Rosenbrock minimum not converged (qnewton).\n");
+printf("Solution found to Himmelblau minimum (Quasi-Newton): (%g,%g).\n",gsl_vector_get(xstart,0),gsl_vector_get(xstart,1));
 gsl_vector_free(df);
 gsl_vector_free(xstart);
     return 0;

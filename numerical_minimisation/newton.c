@@ -17,7 +17,7 @@ gsl_matrix* H=gsl_matrix_alloc(n,n);
 gsl_matrix* R=gsl_matrix_alloc(n,n);
 gsl_vector* s=gsl_vector_alloc(n);
 int steps=0,limit=10000;
-double lambda_min=1.0/50;
+double lambda_min=1.0/1000000;
 num_grad(x0,df,func);
 
 while(steps<limit){
@@ -44,10 +44,9 @@ if(steps<limit) return GSL_SUCCESS;
 
 int qnewton(double func(gsl_vector*x),gsl_vector* x0,gsl_vector* df,double epsilon){
 int n=x0->size;
-int steps=0, max_step=10;
-double lambda_min=1.0/100;
+int steps=0, max_step=100000;
+double lambda_min=1.0/1000000000;
 gsl_matrix* B=gsl_matrix_alloc(n,n);
-gsl_matrix* deltaB=gsl_matrix_alloc(n,n);
 gsl_vector* s=gsl_vector_alloc(n);
 gsl_vector* y=gsl_vector_alloc(n);
 gsl_vector* u=gsl_vector_alloc(n);
@@ -57,39 +56,32 @@ gsl_matrix_set_identity(B);
 while(steps<max_step){
     steps++;
 num_grad(x0,df,func);
-    
+  /*  fprintf(stderr,"Position: (%g,%g). Gradient: (%g,%g).\n",gsl_vector_get(x0,0),gsl_vector_get(x0,1),gsl_vector_get(df,0),gsl_vector_get(df,1));*/
 gsl_blas_dgemv(CblasNoTrans,-1,B,df,0,s);
 double lambda=linsearch(func,x0,s,df,lambda_min);
-/*if (lambda<=lambda_min)gsl_matrix_set_identity(B);*/
+if (lambda<=lambda_min)gsl_matrix_set_identity(B);
 gsl_vector_add(x0,s);
 num_grad(x0,y,func);
-fprintf(stderr,"Position: (%g,%g). Gradient: (%g,%g).\n",gsl_vector_get(x0,0),gsl_vector_get(x0,1),gsl_vector_get(df,0),gsl_vector_get(df,1));
-    if(sqrt(dotproduct(y,y))<epsilon)break;
-gsl_vector_sub(y,df);
+
+    if(gsl_blas_dnrm2(y)<epsilon)break;
+gsl_vector_sub(y,df);/*y=grad(x+dx)-grad(x)*/
 
 gsl_vector_memcpy(u,s);
-gsl_blas_dgemv(CblasNoTrans,1,B,y,-1,u);
+gsl_blas_dgemv(CblasNoTrans,-1,B,y,1,u);
 
 double product=dotproduct(u,y);
-if(fabs(product)>0.000001){
+if(fabs(product)>0.00000000001){
 
-for(int i=0;i<n;i++){
-    for(int j=0;j<n;j++){
-        double temp=gsl_vector_get(u,i)*gsl_vector_get(u,j)/product;
-        gsl_matrix_set(deltaB,i,j,temp);
-    }
-}
-printf("DeltaB, iteration %i:\n",steps);
-print_matrix(deltaB);
-printf("\n");
-gsl_matrix_add(B,deltaB);
+
+gsl_blas_dger(1.0/product,u,u,B);
+
 }
 }
 gsl_vector_free(u);
 gsl_vector_free(y);
 gsl_vector_free(s);
 gsl_matrix_free(B);
-gsl_matrix_free(deltaB);
+
     printf("Quasi-newtonian, number of steps: %i.\n", steps);
 if(steps<max_step) return GSL_SUCCESS;
     else return GSL_EMAXITER;
