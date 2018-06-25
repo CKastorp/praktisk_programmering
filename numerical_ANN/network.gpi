@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'ANN.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Fit by neural network'
+plot 'output.txt' index 0 with lines title 'sin(x)*exp(-x^2)',\
+	'output.txt' index 1 with lines title 'Network w. 4 gaussian neurons'
