@@ -72,7 +72,7 @@ double f4=integrator(func,y4,d(y4),u(y4),acc,eps);
 double Q=(2*f1+f2+f3+2*f4)/6*(b-a);
 double q=(f1+f2+f3+f4)/4*(b-a);
 double error=fabs(Q-q);
-double tolerance=acc*pow(sqrt(2),current)+eps*fabs(Q);/*Adjusting accuracy to take accuont for increased number of absiccas*/
+double tolerance=acc/pow(sqrt(2),current)+eps*fabs(Q);/*Adjusting accuracy to take accuont for increased number of absiccas*/
 if(error<tolerance) return Q;
 else{
 double Q1=slave2D(func,a,a+(b-a)/2,d,u,f1,f2,acc,eps,current+1);
