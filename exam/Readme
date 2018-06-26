@@ -2,4 +2,4 @@ This folder contains a subroutine for the two-dimensional adaptive integrator ba
 In one dimension, it functions as the adaptive integrator, but uses integrls in the other dimension as function values.
 In the other, it functions exactly like the adaptive integrator, save for passing the y values. Only this dimension can at the current stage handle diverging boundaries, which means that d(y) and u(y) can diverge, but a and b have to remain finite.
 
-A few simple tests are included, which show that the routine works as intended, although it has roundoff errors (pi is calculated to be 3.14162 not 3.14159).
+A few simple tests are included, which show that the routine works as intended.
